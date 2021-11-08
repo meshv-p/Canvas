@@ -81,6 +81,9 @@
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', () => isDrawing = false);
         canvas.addEventListener('mouseout', () => isDrawing = false);
+        canvas.addEventListener('touchstart', draw);
+        canvas.addEventListener('touchmove', () => isDrawing = false);
+        canvas.addEventListener('touchend', () => isDrawing = false);
         function f() {
             
             printJS({ printable: document.querySelector("#draw").toDataURL(), type: 'image', imageStyle: 'width:100%' });
