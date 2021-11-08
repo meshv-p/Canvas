@@ -12,10 +12,19 @@
             margin: 0;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.css"
+        integrity="sha512-tKGnmy6w6vpt8VyMNuWbQtk6D6vwU8VCxUi0kEMXmtgwW+6F70iONzukEUC3gvb+KTJTLzDKAGGWc1R7rmIgxQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.js"
+        integrity="sha512-/fgTphwXa3lqAhN+I8gG8AvuaTErm1YxpUjbdCvwfTMyv8UZnFyId7ft5736xQ6CyQN4Nzr21lBuWWA9RTCXCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
     <canvas id="draw"></canvas>
+    <button id="print" onclick="f()">Save as Pdf</button>
+    <img id='snapshotImageElement'/>
     <script>
         let canvas = document.querySelector("#draw");
         let ctx = canvas.getContext('2d');
@@ -72,7 +81,12 @@
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', () => isDrawing = false);
         canvas.addEventListener('mouseout', () => isDrawing = false);
+        function f() {
+            
+            printJS({ printable: document.querySelector("#draw").toDataURL(), type: 'image', imageStyle: 'width:100%' });
+        }
 
+       
     </script>
 </body>
 
